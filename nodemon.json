@@ -1,0 +1,8 @@
+{
+    "watch": ["src"],
+    "ext": "js",
+    "execMap": {
+      "js": "node --inspect -r sucrase/register ./src/server.js"
+    },
+    "ignore": ["__tests__"]
+}

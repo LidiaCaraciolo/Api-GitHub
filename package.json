@@ -1,0 +1,53 @@
+{
+  "name": "api-github",
+  "version": "1.0.0",
+  "description": "NodeJs, Express, MongoDb",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "build": "sucrase ./src -d ./dist --transform imports",
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LidiaCaraciolo/Api-GitHub.git"
+  },
+  "keywords": [],
+  "author": "Lidia Cristina Caraciolo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LidiaCaraciolo/Api-GitHub/issues"
+  },
+  "homepage": "https://github.com/LidiaCaraciolo/Api-GitHub#readme",
+  "devDependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^23.2.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
+    "sucrase": "^3.12.1"
+  },
+  "dependencies": {
+    "add": "^2.0.6",
+    "bcrypt": "^3.0.7",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.17.1",
+    "express-body-parser-json-error": "^0.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "yarn": "^1.22.4"
+  }
+}
