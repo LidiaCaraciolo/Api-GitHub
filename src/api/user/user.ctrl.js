@@ -4,27 +4,75 @@ import { User } from '../../shared/models'
 class UserController extends BaseResponse {
   constructor() {
     super()
-    this.user = User
+    this.User = User
   }
 
   async index(req, res, next) {
-    let params = {
-      messages: 'OK!',
-      status: 201,
-    }
     try {
-      this.sendResponse(res, next, params)
-    } catch (error) {}
+      const data = await this.User.find()
+      this.sendResponse(res, next, { status: 201, data })
+    } catch (error) {
+      this.sendError(res, next, { status: 401, messages: error.message })
+    }
   }
 
-  store(req, res, next) {
-    const { body } = req
-    const params = {
-      messages: 'OK!',
-      data: body,
-      status: 201,
+  async store(req, res, next) {
+    try {
+      const { usename, email, nickname, password } = req.body
+      if (usename && email && nickname && password) {
+        const data = await this.User.create({
+          usename,
+          email,
+          nickname,
+          password,
+        })
+        this.sendResponse(res, next, { status: 201, data })
+      } else {
+        this.sendError(res, next, {
+          status: 402,
+          messages: 'Error params on body',
+        })
+      }
+    } catch (error) {
+      this.sendError(res, next, { status: 401, messages: error.message })
     }
-    this.sendResponse(res, next, params)
+  }
+
+  async updateUserName(req, res, next) {
+    try {
+      const { id, usename } = req.body
+      if (id && usename) {
+        const data = await this.User.updateOne(
+          { _id: id },
+          { $set: { usename } }
+        )
+        this.sendResponse(res, next, { status: 201, data })
+      } else {
+        this.sendError(res, next, {
+          status: 402,
+          messages: 'Error params on body',
+        })
+      }
+    } catch (error) {
+      this.sendError(res, next, { status: 403, messages: error.message })
+    }
+  }
+
+  async remove(req, res, next) {
+    try {
+      const { id } = req.body
+      if (id) {
+        const data = await this.User.remove({ _id: id })
+        this.sendResponse(res, next, { status: 201, data })
+      } else {
+        this.sendError(res, next, {
+          status: 402,
+          messages: 'Error params on body',
+        })
+      }
+    } catch (error) {
+      this.sendError(res, next, { status: 403, messages: error.message })
+    }
   }
 }
 

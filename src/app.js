@@ -4,6 +4,7 @@ import express from 'express'
 
 import BaseResponse from './shared/base/response'
 import routes from './routes'
+import './config/database'
 
 class App extends BaseResponse {
   constructor() {

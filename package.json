@@ -7,7 +7,8 @@
     "start": "nodemon src/server.js",
     "build": "sucrase ./src -d ./dist --transform imports",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "docker": "bash ./scripts/docker.sh"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,6 @@
     "express-body-parser-json-error": "^0.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
-    "yarn": "^1.22.4"
+    "mongoose": "^5.9.5"
   }
 }

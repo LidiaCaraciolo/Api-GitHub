@@ -10,6 +10,8 @@ class UserRouter extends BaseRouter {
   initialize() {
     this.get('/', UserController.index)
     this.post('/', UserController.store)
+    this.put('/updateUsername/', UserController.updateUserName)
+    this.delete('/delete/', UserController.remove)
   }
 }
 
